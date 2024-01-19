@@ -1,39 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Button from "./Button";
+import ToDoList from "./ToDoList";
+import CoinTracker from "./CoinTracker";
 
 function App() {
-  const [toDo, setToDo] = useState("");
-  const [toDos, setToDos] = useState([]);
-  const onChange = (event) => {
-    setToDo(event.target.value);
-  };
-  const onSubmit = (event) => {
-    event.preventDefault();
-    if (toDo === "") {
-      return;
-    }
-    setToDos((currentArray) => [...currentArray, toDo]);
-    setToDo("");
-  };
-  console.log(toDos);
-  console.log(toDos.map((e, index) => <li key={index}>{e}</li>));
+  const [viewNum, setViewNum] = useState(0);
   return (
     <div>
-      <h1>My To Dos ({toDos.length})</h1>
-      <form onSubmit={onSubmit}>
-        <input
-          onChange={onChange}
-          value={toDo}
-          type={"text"}
-          placeholder={"Write your to do..."}
-        />
-        <button>Add To Do</button>
-      </form>
+      <Button text={"To Do List"} number={1} setViewNum={setViewNum} />
+      <Button text={"Coin Tracker"} number={2} setViewNum={setViewNum} />
       <hr />
-      <ul>
-        {toDos.map((e, index) => (
-          <li key={index}>{e}</li>
-        ))}
-      </ul>
+      <ToDoList viewNum={viewNum} />
+      <CoinTracker viewNum={viewNum} />
     </div>
   );
 }
