@@ -1,21 +1,31 @@
-import { useState } from "react";
-import Button from "./Button";
-import ToDoList from "./ToDoList";
-import CoinTracker from "./CoinTracker";
-import Movie from "./Movie";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./routes/Home";
+import Detail from "./routes/Detail";
+import ToDoList from "./routes/ToDoList";
+import CoinTracker from "./routes/CoinTracker";
+import MovieList from "./routes/MovieList";
 
 function App() {
-  const [viewNum, setViewNum] = useState(0);
   return (
-    <div>
-      <Button text={"To Do List"} number={1} setViewNum={setViewNum} />
-      <Button text={"Coin Tracker"} number={2} setViewNum={setViewNum} />
-      <Button text={"Movie"} number={3} setViewNum={setViewNum} />
-      <hr />
-      <ToDoList viewNum={viewNum} />
-      <CoinTracker viewNum={viewNum} />
-      <Movie viewNum={viewNum} />
-    </div>
+    <Router>
+      <Switch>
+        <Route path={"/coin"}>
+          <CoinTracker />
+        </Route>
+        <Route path={"/movie/:id"}>
+          <Detail />
+        </Route>
+        <Route path={"/movie"}>
+          <MovieList />
+        </Route>
+        <Route path={"/todo"}>
+          <ToDoList />
+        </Route>
+        <Route path={"/"}>
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
