@@ -1,13 +1,12 @@
 import propTypes from "prop-types";
-import styles from "./Button.module.css";
+import styles from "../css/Button.module.css";
+import { Link } from "react-router-dom";
 
-function Button({ text, number, setViewNum }) {
-  const onClick = () => {
-    setViewNum(number);
-  };
+function Button({ text, url }) {
+  const onClick = () => {};
   return (
     <button className={styles.btn} onClick={onClick}>
-      {text}
+      <Link to={url}>{text}</Link>
     </button>
   );
 }
