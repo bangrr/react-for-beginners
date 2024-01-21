@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ToDoList({ viewNum }) {
+function ToDoList() {
   const [toDo, setToDo] = useState("");
   const [toDos, setToDos] = useState([]);
   const onChange = (event) => {
@@ -15,7 +15,7 @@ function ToDoList({ viewNum }) {
     setToDo("");
   };
   return (
-    <div hidden={viewNum !== 1}>
+    <div>
       <h1>My To Dos ({toDos.length})</h1>
       <form onSubmit={onSubmit}>
         <input

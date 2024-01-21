@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import Movie from "../components/Movie";
 
-function Movie({ viewNum }) {
+function MovieList() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const getMovies = async () => {
@@ -14,28 +15,21 @@ function Movie({ viewNum }) {
   };
   useEffect(() => {
     getMovies();
-    console.log(movies);
   }, []);
   return (
-    <div hidden={viewNum !== 3}>
+    <div>
       {loading ? (
         <strong>Loading...</strong>
       ) : (
         <div>
           {movies.map((movie) => (
-            <div key={movie.id}>
-              <img src={movie.medium_cover_image} />
-              <h2>
-                {movie.title} ({movie.year})
-              </h2>
-              <p>{movie.summary}</p>
-              <ul>
-                {movie.genres.map((genre) => (
-                  <li key={genre}>{genre}</li>
-                ))}
-              </ul>
-              <hr />
-            </div>
+            <Movie
+              key={movie.id}
+              id={movie.id}
+              medium_cover_image={movie.medium_cover_image}
+              title={movie.title}
+              year={movie.year}
+            />
           ))}
         </div>
       )}
@@ -43,4 +37,4 @@ function Movie({ viewNum }) {
   );
 }
 
-export default Movie;
+export default MovieList;

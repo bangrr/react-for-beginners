@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function CoinTracker({ viewNum }) {
+function CoinTracker() {
   const [loading, setLoading] = useState(true);
   const [coins, setCoins] = useState([]);
   useEffect(() => {
@@ -12,7 +12,7 @@ function CoinTracker({ viewNum }) {
       });
   }, []);
   return (
-    <div hidden={viewNum !== 2}>
+    <div>
       <h1>Coin Tracker ({coins.length})</h1>
       {loading ? <strong>Loading...</strong> : null}
       <ul>
