@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.e84d8d1c.css","mappings":"AAAA,mBAEE,wBAA4B,CAD5B,UAAY,CAEZ,iBACF","sources":["css/Button.module.css"],"sourcesContent":[".btn {\n  color: white;\n  background-color: dodgerblue;\n  margin-right: 10px;\n}"],"names":[],"sourceRoot":""}
