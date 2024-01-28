@@ -10,6 +10,7 @@ function MovieList() {
         `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`,
       )
     ).json();
+    console.log(json.data);
     setMovies(json.data.movies);
     setLoading(false);
   };
@@ -29,6 +30,11 @@ function MovieList() {
               medium_cover_image={movie.medium_cover_image}
               title={movie.title}
               year={movie.year}
+              summary={
+                movie.description_full.length > 200
+                  ? `${movie.description_full.slice(0, 197)}...`
+                  : movie.description_full
+              }
             />
           ))}
         </div>
