@@ -7,7 +7,7 @@ import MovieList from "./routes/MovieList";
 
 function App() {
   return (
-    <Router>
+    <Router basename={"/react-for-beginners"}>
       <Switch>
         <Route path={"/coin"}>
           <CoinTracker />
